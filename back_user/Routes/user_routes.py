@@ -7,8 +7,8 @@ user_bp = Blueprint('user_bp', __name__)
 @user_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
-    user = UserService.register(data['username'], data['email'], data['password'])
-    return jsonify({"message": "Usuario registrado exitosamente", "id": user.id}), 201
+    user = UserService.create_user(data['username'], data['email'], data['password'])
+    return jsonify({"message": "Usuario reg istrado exitosamente", "id": user.id}), 201
 
 @user_bp.route('/login', methods=['POST'])
 def login():

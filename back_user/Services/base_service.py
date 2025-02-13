@@ -1,11 +1,12 @@
 from models.user import db
+from models.user import User
 
 class BaseService:
     @staticmethod
-    def create(instance):
-        db.session.add(instance)
+    def create(User):
+        db.session.add(User)
         db.session.commit()
-        return instance
+        return User
 
     @staticmethod
     def get_by_id(model, id):
