@@ -8,19 +8,11 @@ user_service = UserService()
 
 @user_bp.route("/register", methods=["POST"])
 def register():
-    try:
-        data = request.get_json()
-        if not data or not data.get("username") or not data.get("email") or not data.get("password"):
-            return jsonify({"error": "All fields are required"}), 400
-        user = User(username=data["username"], email=data["email"], password_hash=data["password"])
-        user = user_service.create_user(user)
-        return jsonify({"message": "User created", "user": user.username}), 201
-    except ValueError as e:
-        return jsonify({"error": str(e)}), 400
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    data = request.get_json()
+    user = UserService.register(data['username'], data['email'], data['password'])
+    return jsonify({"message": "Usuario registrado exitosamente", "id": user.id}), 201
 
-@user_bp.route("/login", methods=["POST"])
+@user_bp.route('/login', methods=['POST'])
 def login():
     try:
         data = request.get_json()
