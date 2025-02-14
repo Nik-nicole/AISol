@@ -1,21 +1,20 @@
 from models.user import db
 
 class BaseService:
-    @staticmethod
-    def create(instance):
-        db.session.add(instance)
+    def __init__(self, model):
+        self.model = model
+    
+    def save(self, entity):
+        db.session.add(entity)
         db.session.commit()
-        return instance
+        return entity
 
-    @staticmethod
-    def get_by_id(model, id):
-        return model.query.get(id)
-
-    @staticmethod
-    def get_all(model):
-        return model.query.all()
-
-    @staticmethod
-    def delete(instance):
-        db.session.delete(instance)
+    def delete(self, entity):
+        db.session.delete(entity)
         db.session.commit()
+    
+    def get_by_id(self, id):
+        return self.model.query.get(id)
+    
+    def get_all(self):
+        return self.model.query.all()

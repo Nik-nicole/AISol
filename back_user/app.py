@@ -1,24 +1,20 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 from config import Config
-from db import db
-from Routes.user_routes import user_bp
 
+# Inicialización
 app = Flask(__name__)
 app.config.from_object(Config)
-
-# Inicializar la base de datos
-db.init_app(app)
-
-# Inicializar JWT
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
+migrate = Migrate(app, db)  # Agregar esta línea
 
-# Registrar Blueprints
-app.register_blueprint(user_bp, url_prefix='/api/users')
+from Routes.user_routes import user_bp
+app.register_blueprint(user_bp, url_prefix="/auth")
 
-# Crear las tablas en la base de datos
-with app.app_context():
-    db.create_all()
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
