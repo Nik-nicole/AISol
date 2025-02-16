@@ -42,3 +42,21 @@ Este proyecto se distribuye bajo la licencia MIT.
 ---
 Servicio Nacional de Aprendizaje - Centro de Servicios Financieros
 
+---
+# Estructuara del proyecto y recomendaciones
+![image](https://github.com/user-attachments/assets/50352332-3ebf-4a23-9670-f514e000726b)
+
+aqui tu puedes encontrar la estructura en carpetas que se ve en el codigo 
+
+donde la carpeta back_user contiene todo el back y configuracion del inicio de sesion como el de registro
+
+y las carpetas MP_DATA, animals y Fruits contienen toda la data de videos que se necesecitaron y se necesitan para entrenar los modelos 
+
+lo demas son los notbooks donde se encuentra paso a paso como entrenar cada modelo y como estos se pueden usar
+
+cabe aclarar que antes de iniciar en este proyecto voy a dar unas recomendaciones tecnicas:
+
+version de python recomendada : 3.12.5 o 3.12.9
+instalar anaconda para la gestion de entornos virtuales con varias versiones de python
+instalar flask 
+Tener en cuenta tanto la carpeta migratiosn como el .env para el back , ya que esto puede generar una serie de errores si no es configurado correctamente, para inicializar tanto la base de datos y sus rutas como lo es los package pip del .env que son aparte del entorno virtual creado en anaconda.
