@@ -1,4 +1,5 @@
 from app import db
+
 class BaseService:
     def __init__(self, model):
         self.model = model
@@ -17,3 +18,4 @@ class BaseService:
     
     def get_all(self):
         return self.model.query.all()
+    

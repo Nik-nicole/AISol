@@ -15,13 +15,14 @@ mp_holistic = mp.solutions.holistic
 holistic = mp_holistic.Holistic(min_detection_confidence=0.10, min_tracking_confidence=0.10)
 
 # Load your trained model
-model = tf.keras.models.load_model(r"C:\Users\dell\Downloads\programas de programacion\proyectos\AI\AISol\prueba5.h5")
+model_path = "/home/fabrica/Desktop/IA LSC/AISol/prueba5.h5"
+model = tf.keras.models.load_model(model_path)
 
 
 
 
 # Define your actions
-actions = np.array(['Hola', 'Gracias', 'YoAmoTi'])  # Replace with your actual signs
+actions = np.array(['Hola', 'Gracias', 'Amor'])  # Replace with your actual signs
 
 # Function to process MediaPipe results
 def mediapipe_detection(image):
